@@ -1,20 +1,32 @@
-﻿using System;
+﻿using EF_ElectronicJournal.Models;
+using System;
 using System.Collections.Generic;
 
 namespace EF_ElectronicJournal
 {
-    public partial class Grade
+    public partial class Grade : Ratings
     {
+        public int grade;
+        public string? comment;
         public int Id { get; set; }
-        public int Grades { get; set; }
-        public string? Comment { get; set; }
-        public int? StudentId { get; set; }
-        public int? TeacherId { get; set; }
-        public DateTime DateRating { get; set; }
-        public int LessonId { get; set; }
+        public int Grades
+        {
+            get { return grade; }
+            set
+            {
+                grade = value;
+                OnPropertyChanged("Grades");
+            }
+        }
+        public string? Comment
+        {
+            get { return comment; }
+            set
+            {
+                comment = value;
+                OnPropertyChanged("Comment");
+            }
+        }
 
-        public virtual Lesson Lesson { get; set; } = null!;
-        public virtual Student? Student { get; set; }
-        public virtual Teacher? Teacher { get; set; }
     }
 }
